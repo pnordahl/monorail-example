@@ -1,0 +1,77 @@
+{
+  "targets": [
+    {
+      "path": "rust",
+      "uses": [
+        "proto"
+      ]
+    },
+    {
+      "path": "rust/crate1",
+      "commands": {
+        "definitions": {
+          "test": {
+            "path": "rust/monorail/member-test.sh",
+            "args": [
+              "crate1"
+            ]
+          }  
+        }
+      }
+    },
+    {
+      "path": "rust/crate2",
+      "commands": {
+        "definitions": {
+          "test": {
+            "path": "rust/monorail/member-test.sh",
+            "args": [
+              "crate2"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "rust/crate3",
+      "commands": {
+        "definitions": {
+          "test": {
+            "path": "rust/monorail/member-test.sh",
+            "args": [
+              "crate3"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "go",
+      "uses": [
+        "proto"
+      ]
+    },
+    {
+      "path": "go/project1"
+    },
+    {
+      "path": "go/project2"
+    },
+    {
+      "path": "c++/hello",
+      "uses": [
+        "proto"
+      ]
+    },
+    {
+      "path": "proto"
+    }
+  ],
+  "sequences": {
+    "dev": [
+      "lint",
+      "build",
+      "test"
+    ]
+  }
+}
