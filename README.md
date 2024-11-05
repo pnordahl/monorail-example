@@ -8,6 +8,8 @@ This demonstrates a monorepo with c++, go, and rust. Make sure you have `g++`, `
 
 ## Running commands for all targets
 
+Before continuing, open a separate shell and run `monorail log tail --stdout --stderr` to live-tail logs from all subsequent `monorail run` invocations. You can also query the most recent run log with `monorail log show --stdout --stderr`.
+
 When you clone this repo, all of the targets will be dirty (as there is no initial checkpoint). You can see this yourself by running `monorail analyze --target-groups | jq`, where all targets will appear as changed.
 
 So, all of the following commands will run for all targets with appropriate dag-guided parallelism.
