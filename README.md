@@ -10,7 +10,46 @@ This demonstrates a monorepo with c++, go, and rust. Make sure you have `g++`, `
 
 Before continuing, open a separate shell and run `monorail log tail --stdout --stderr` to live-tail logs from all subsequent `monorail run` invocations. You can also query the most recent run log with `monorail log show --stdout --stderr`.
 
-When you clone this repo, all of the targets will be dirty (as there is no initial checkpoint). You can see this yourself by running `monorail analyze --target-groups | jq`, where all targets will appear as changed.
+When you clone this repo, all of the targets will be dirty (as there is no initial checkpoint). You can see this yourself by running `monorail analyze --target-groups | jq`, where all targets will appear as changed. One note about this output:
+
+```sh
+monorail analyze --target-groups | jq
+```
+```json
+{
+  "timestamp": "2024-11-05T00:57:27.408883+00:00",
+  "targets": [
+    "c++/hello",
+    "go",
+    "go/project1",
+    "go/project2",
+    "proto",
+    "rust",
+    "rust/crate1",
+    "rust/crate2",
+    "rust/crate3"
+  ],
+  "target_groups": [
+    [
+      "proto"
+    ],
+    [
+      "go",
+      "rust"
+    ],
+    [
+      "rust/crate1",
+      "rust/crate2",
+      "rust/crate3",
+      "go/project1",
+      "go/project2",
+      "c++/hello"
+    ]
+  ]
+}
+```
+
+The `target_groups` array is built from your `uses` declarations in `Monorail.json`, and informs `monorail`s parallel execution plan. The first array of targets that will be executed for contains just "proto", the next contains "go" and "rust", and the final group contains all remaining targets. Each successive array that is processed unlocks more targets to execute, and all targets with an array are executed in parallel.
 
 So, all of the following commands will run for all targets with appropriate dag-guided parallelism.
 
