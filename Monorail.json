@@ -1,10 +1,7 @@
 {
   "targets": [
     {
-      "path": "rust",
-      "uses": [
-        "proto"
-      ]
+      "path": "rust"
     },
     {
       "path": "rust/crate1",
@@ -17,7 +14,10 @@
             ]
           }  
         }
-      }
+      },
+      "uses": [
+        "proto"
+      ]
     },
     {
       "path": "rust/crate2",
@@ -30,7 +30,10 @@
             ]
           }
         }
-      }
+      },
+      "uses": [
+        "proto"
+      ]
     },
     {
       "path": "rust/crate3",
@@ -43,19 +46,25 @@
             ]
           }
         }
-      }
-    },
-    {
-      "path": "go",
+      },
       "uses": [
         "proto"
       ]
     },
     {
-      "path": "go/project1"
+      "path": "go"
     },
     {
-      "path": "go/project2"
+      "path": "go/project1",
+      "uses": [
+        "proto"
+      ]
+    },
+    {
+      "path": "go/project2",
+      "uses": [
+        "proto"
+      ]
     },
     {
       "path": "c++/hello",
