@@ -59,6 +59,26 @@ So, all of the following commands will run for all targets with appropriate dag-
 
 `monorail run -c test | jq`
 
+Use the arg API to provide additional runtime arguments for a single command and target:
+
+`monorail run -c test -t rust/crate1 --arg another_one`
+
+... or use the arg-map API for more flexibility and use with multi-target, multi-command use cases:
+
+```sh
+monorail run -c lint build test --arg-map='{
+  "rust/crate1": {
+    "test": [
+      "another_one"
+    ]
+  }
+}'
+```
+
+... or save the arg map JSON to a file and use that instead:
+
+`monorail run -c lint build test --arg-map-file=my_arg_map.json`
+
 ### Doing both with a sequence
 
 `monorail run -s dev | jq`
