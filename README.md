@@ -89,7 +89,7 @@ monorail run -c lint build test --arg-map='{
 
 `monorail run -c lint build test -f rust/crates.argmap.json`
 
-### Doing both with a sequence
+### Using sequences to combine lists of commands
 
 `monorail run -s dev -f rust/crates.argmap.json | jq`
 
