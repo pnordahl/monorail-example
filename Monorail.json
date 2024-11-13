@@ -8,10 +8,7 @@
       "commands": {
         "definitions": {
           "test": {
-            "path": "rust/monorail/member-test.sh",
-            "args": [
-              "crate1"
-            ]
+            "path": "rust/monorail/member-test.sh"
           }  
         }
       },
@@ -24,10 +21,7 @@
       "commands": {
         "definitions": {
           "test": {
-            "path": "rust/monorail/member-test.sh",
-            "args": [
-              "crate2"
-            ]
+            "path": "rust/monorail/member-test.sh"
           }
         }
       },
@@ -40,10 +34,7 @@
       "commands": {
         "definitions": {
           "test": {
-            "path": "rust/monorail/member-test.sh",
-            "args": [
-              "crate3"
-            ]
+            "path": "rust/monorail/member-test.sh"
           }
         }
       },

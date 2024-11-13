@@ -1,0 +1,17 @@
+{
+  "rust/crate1": {
+    "test": [
+      "crate1"
+    ]
+  },
+  "rust/crate2": {
+    "test": [
+      "crate2"
+    ]
+  },
+  "rust/crate3": {
+    "test": [
+      "crate3"
+    ]
+  }
+}

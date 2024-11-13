@@ -57,11 +57,9 @@ So, all of the following commands will run for all targets with appropriate dag-
 
 ### Testing
 
-`monorail run -c test | jq`
+The rust crates all use the same `rust/monorail/member-test.sh` script, which takes one argument for the crate to test, and an optional second for a test to run. We can specify those with `--arg` when working with a single command and target:
 
-Use the arg API to provide additional runtime arguments for a single command and target:
-
-`monorail run -c test -t rust/crate1 --arg another_one`
+`monorail run -c test -t rust/crate1 --arg crate1 --arg another_one | jq`
 
 ... or use the arg-map API for more flexibility and use with multi-target, multi-command use cases:
 
@@ -69,19 +67,31 @@ Use the arg API to provide additional runtime arguments for a single command and
 monorail run -c lint build test --arg-map='{
   "rust/crate1": {
     "test": [
+      "crate1",
       "another_one"
+    ]
+  },
+  "rust/crate2": {
+    "test": [
+      "crate2",
+      "it_works"
+    ]
+  },
+  "rust/crate3": {
+    "test": [
+      "crate3"
     ]
   }
 }'
 ```
 
-... or save the arg map JSON to a file and use that instead:
+... or save the arg map JSON to a file and use that:
 
-`monorail run -c lint build test --arg-map-file=my_arg_map.json`
+`monorail run -c lint build test -f rust/crates.argmap.json`
 
 ### Doing both with a sequence
 
-`monorail run -s dev | jq`
+`monorail run -s dev -f rust/crates.argmap.json | jq`
 
 ### Cleaning
 

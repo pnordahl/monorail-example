@@ -1,7 +1,0 @@
-{
-  "rust/crate1": {
-    "test": [
-      "another_one"
-    ]
-  }
-}
