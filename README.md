@@ -57,14 +57,14 @@ So, all of the following commands will run for all targets with appropriate dag-
 
 ### Testing
 
-The rust crates all use the same `rust/monorail/member-test.sh` script, which takes one argument for the crate to test, and an optional second for a test to run. We can specify those with `--arg` when working with a single command and target:
+The rust crates all use the same `rust/monorail/cmd/member-test.sh` script, which takes one argument for the crate to test, and an optional second for a test to run. We can specify those with `--arg` when working with a single command and target:
 
 `monorail run -c test -t rust/crate1 --arg crate1 --arg another_one | jq`
 
-... or use the arg-map API for more flexibility and use with multi-target, multi-command use cases:
+... or use the target-argmap API for more flexibility and use with multi-target, multi-command use cases:
 
 ```sh
-monorail run -c lint build test --arg-map='{
+monorail run -c lint build test --target-argmap='{
   "rust/crate1": {
     "test": [
       "crate1",
