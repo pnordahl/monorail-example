@@ -6,6 +6,10 @@ This repo demonstrates how `monorail`s design enables fast parallel execution ac
 
 This demonstrates a monorepo with c++, go, and rust. Make sure you have `g++`, `go`, and `cargo` installed, in addition to `jq` for friendly formatting of the JSON output from `monorail`.
 
+## Visualize the graph
+
+Install `graphviz` (`brew install graphviz` on macOS, or `apt install graphviz`) and run `monorail target render`. This will output `target.dot` in the root of the repo, which you can then pass to `dot` with `dot -Tpng target.dot -o target.png`.
+
 ## Running commands for all targets
 
 Before continuing, open a separate shell and run `monorail log tail --stdout --stderr` to live-tail logs from all subsequent `monorail run` invocations. You can also query the most recent run log with `monorail log show --stdout --stderr`.
