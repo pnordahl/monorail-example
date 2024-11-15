@@ -8,7 +8,7 @@ This demonstrates a monorepo with c++, go, and rust. Make sure you have `g++`, `
 
 ## Visualize the graph
 
-Install `graphviz` (`brew install graphviz` on macOS, or `apt install graphviz`) and run `monorail target render`. This will output `target.dot` in the root of the repo, which you can then pass to `dot` with `dot -Tpng target.dot -o target.png`.
+Install `graphviz` (`brew install graphviz` on macOS, or `apt install graphviz`) and run `monorail target render`. This will output `target.dot` in the root of the repo, which you can then pass to `dot` with `dot -Ksfdp -Tpng target.dot -o target.png`. You can choose a different layout, but `sfdp` generally produces the most readable target graph.
 
 ## Running commands for all targets
 
