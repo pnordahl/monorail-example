@@ -1,24 +1,49 @@
 {
+  "sequences": {
+    "dev": [
+      "lint",
+      "build",
+      "test"
+    ]
+  },
+  "source": {
+    "algorithm": "sha256",
+    "checksum": "e6f3bda22d0e497eda1f7e7ba1eebbcb5660355a5e34e3e9ea6d57b32add2191",
+    "path": "Monorail.jsonnet"
+  },
   "targets": [
     {
       "path": "rust"
     },
     {
+      "commands": {
+        "definitions": {
+          "test": {
+            "path": "rust/monorail/cmd/member-test.sh"
+          }
+        }
+      },
       "path": "rust/crate1",
-      "commands": {
-        "definitions": {
-          "test": {
-            "path": "rust/monorail/cmd/member-test.sh"
-          }  
-        }
-      },
       "uses": [
         "proto",
         "rust/monorail/cmd/member-test.sh"
       ]
     },
     {
+      "commands": {
+        "definitions": {
+          "test": {
+            "path": "rust/monorail/cmd/member-test.sh"
+          }
+        }
+      },
       "path": "rust/crate2",
+      "uses": [
+        "proto",
+        "rust/monorail/cmd/member-test.sh"
+      ]
+    },
+    {
       "commands": {
         "definitions": {
           "test": {
@@ -26,27 +51,20 @@
           }
         }
       },
-      "uses": [
-        "proto",
-        "rust/monorail/cmd/member-test.sh"
-      ]
-    },
-    {
       "path": "rust/crate3",
-      "commands": {
-        "definitions": {
-          "test": {
-            "path": "rust/monorail/cmd/member-test.sh"
-          }
-        }
-      },
       "uses": [
         "proto",
         "rust/monorail/cmd/member-test.sh"
       ]
     },
     {
-      "path": "go"
+      "path": "proto"
+    },
+    {
+      "path": "go",
+      "uses": [
+        "proto"
+      ]
     },
     {
       "path": "go/project1",
@@ -65,16 +83,6 @@
       "uses": [
         "proto"
       ]
-    },
-    {
-      "path": "proto"
     }
-  ],
-  "sequences": {
-    "dev": [
-      "lint",
-      "build",
-      "test"
-    ]
-  }
+  ]
 }
