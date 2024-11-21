@@ -12,7 +12,11 @@ If you want to experiment with the `monorail config generate` command, install `
 
 Install `graphviz` (`brew install graphviz` on macOS, or `apt install graphviz`) and run `monorail target render`. This will output `target.dot` in the root of the repo, which you can then pass to `dot` with `dot -Ksfdp -Tpng target.dot -o target.png`. You can choose a different layout, but `sfdp` generally produces the most readable target graph.
 
-Choose the output file location with `monorail target render -f path/to/desired/target.dot`.
+If you prefer, choose the output file location with -f:
+
+```sh
+monorail target render -f /tmp/target.dot && dot -Ksfdp -Tpng /tmp/target.dot -o /tmp/target.png
+```
 
 ## Running commands for all targets
 
