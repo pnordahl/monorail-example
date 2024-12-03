@@ -6,6 +6,7 @@ message Person {
   optional string name = 1;
   optional int32 id = 2;
   optional string email = 3;
+  optional in32 new_id = 4;
 
   enum PhoneType {
     PHONE_TYPE_UNSPECIFIED = 0;

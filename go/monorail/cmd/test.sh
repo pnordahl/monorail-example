@@ -5,6 +5,8 @@
 # built with go/build.sh will be reused, and modules that haven't 
 # changed will reuse the previously created test binary.
 
+source monorail/vars.sh
+
 OUT_DIR="bin"
 
 echo "Building workspace test binaries"

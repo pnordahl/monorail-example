@@ -9,9 +9,9 @@
 # to invoke `protoc` here and build protobufs for our Go modules to use.  
 # This is omitted for brevity.
 
-OUT_DIR="../bin/"
+source monorail/vars.sh
 
 echo "Building workspace modules"
 for mod in $(go work edit -json | jq -r '.Use[].DiskPath'); do
-    go build -C $mod -o "$OUT_DIR" ./...
+    go install -C $mod ./...
 done

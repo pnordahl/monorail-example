@@ -71,35 +71,26 @@ So, all of the following commands will run for all targets with appropriate dag-
 
 The rust crates all use the same `rust/monorail/cmd/member-test.sh` script, which takes one argument for the crate to test, and an optional second for a test to run. We can specify those with `--arg` when working with a single command and target:
 
-`monorail run -c test -t rust/crate1 --arg crate1 --arg another_one | jq`
+`monorail run -c test -t rust/crate1 --args crate1 --no-base-argmaps | jq`
 
-... or use the target-argmap API for more flexibility and use with multi-target, multi-command use cases:
+Or, use the argmap API for more flexibility and use with multi-target, multi-command use cases. All three `rust` crates define a `base.json` argmap, which is a special argmap that is always loaded when a target is involved in a run (unless disable with `--no-base-argmaps`, as above). They look like this:
 
-```sh
-monorail run -c lint build test --target-argmap='{
-  "rust/crate1": {
-    "test": [
-      "crate1",
-      "another_one"
-    ]
-  },
-  "rust/crate2": {
-    "test": [
-      "crate2",
-      "it_works"
-    ]
-  },
-  "rust/crate3": {
-    "test": [
-      "crate3"
-    ]
-  }
-}'
+`rust/crate1/monorail/argmap/base.json`
+```json
+{
+  "test": [
+    "crate1"
+  ]
+}
 ```
 
-... or save the arg map JSON to a file and use that:
+And since they are automatically loaded, you can just run the commands directly without additional flags:
 
-`monorail run -c lint build test -f rust/crates.argmap.json`
+`monorail run -c lint build test`
+
+If you want to create your own argmaps, you can do so by creating a file like `<target>/monorail/argmap/myargmap.json` for any relevant targets, and referring to it by name; any targets that define the file will have the argmap loaded:
+
+`monorail run -c lint build test -m myargmap anotherargmap`
 
 ### Using sequences to combine lists of commands
 

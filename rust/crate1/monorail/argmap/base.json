@@ -1,5 +1,8 @@
 {
 	"test": [
 		"crate1"
+	],
+	"hello": [
+		"pork"
 	]
 }

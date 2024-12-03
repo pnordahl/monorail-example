@@ -19,5 +19,6 @@ void testSayHello() {
 
 int main() {
     testSayHello();
+    std::cout << "making some cool changes" << std::endl;
     return 0;
 }

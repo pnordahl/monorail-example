@@ -54,7 +54,8 @@ local sequences = {
     {
       path: paths.rust_crate1,
       uses: rust_crate_uses,
-      commands: rust_crate_commands
+      commands: rust_crate_commands,
+      ignores: ["rust/crate1/Cargo.toml"]
     },
     {
       path: paths.rust_crate2,

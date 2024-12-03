@@ -8,7 +8,7 @@
   },
   "source": {
     "algorithm": "sha256",
-    "checksum": "e6f3bda22d0e497eda1f7e7ba1eebbcb5660355a5e34e3e9ea6d57b32add2191",
+    "checksum": "dfe60b53de748adbc96d2766e8e292ec421597696efe7a2c3671d28afa121a8c",
     "path": "Monorail.jsonnet"
   },
   "targets": [
@@ -23,6 +23,9 @@
           }
         }
       },
+      "ignores": [
+        "rust/crate1/Cargo.toml"
+      ],
       "path": "rust/crate1",
       "uses": [
         "proto",

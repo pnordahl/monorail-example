@@ -1,3 +1,4 @@
+build/
 monorail-out
 rust/target
 go/bin
